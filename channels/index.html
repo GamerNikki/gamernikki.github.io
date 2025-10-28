@@ -1,64 +1,112 @@
-<!doctype html>
-<html lang="en" class="no-js">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://html5-templates.com/" />
-    <title>Responsive HTML5 Page Layout Template</title>
-    <meta name="description" content="Simple HTML5 Page layout template with header, footer, sidebar etc.">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Channels Directory Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: 1000px;
+      padding: 20px;
+      width: 100%;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .item {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .item:hover {
+      transform: translateY(-5px);
+    }
+
+    .item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .item-info {
+      padding: 15px;
+    }
+
+    .item-info h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .item-info p {
+      font-size: 14px;
+      color: #777;
+    }
+
+    .item-link {
+      color: #4CAF50;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+  </style>
 </head>
-
 <body>
-	<header>
-		<div id="logo"><img src="/logo.png">HTML5&nbsp;Layout</div>
-		<nav>  
-			<ul>
-				<li><a href="/">Home</a>
-				<li><a href="https://html-css-js.com/">HTML</a>
-				<li><a href="https://html-css-js.com/css/code/">CSS</a>
-				<li><a href="https://htmlcheatsheet.com/js/">JS</a>
-			</ul>
-		</nav>
-	</header>
-	<section>
-		<strong>Demonstration of a simple page layout using HTML5 tags: header, nav, section, main, article, aside, footer, address.</strong>
-	</section>
-	<section id="pageContent">
-		<main role="main">
-			<article>
-				<h2>Stet facilis ius te</h2>
-				<p>Lorem ipsum dolor sit amet, nonumes voluptatum mel ea, cu case ceteros cum. Novum commodo malorum vix ut. Dolores consequuntur in ius, sale electram dissentiunt quo te. Cu duo omnes invidunt, eos eu mucius fabellas. Stet facilis ius te, quando voluptatibus eos in. Ad vix mundi alterum, integre urbanitas intellegam vix in.</p>
-			</article>
-			<article>
-				<h2>Illud mollis moderatius</h2>
-				<p>Eum facete intellegat ei, ut mazim melius usu. Has elit simul primis ne, regione minimum id cum. Sea deleniti dissentiet ea. Illud mollis moderatius ut per, at qui ubique populo. Eum ad cibo legimus, vim ei quidam fastidii.</p>
-			</article>
-			<article>
-				<h2>Ex ignota epicurei quo</h2>
-				<p>Quo debet vivendo ex. Qui ut admodum senserit partiendo. Id adipiscing disputando eam, sea id magna pertinax concludaturque. Ex ignota epicurei quo, his ex doctus delenit fabellas, erat timeam cotidieque sit in. Vel eu soleat voluptatibus, cum cu exerci mediocritatem. Malis legere at per, has brute putant animal et, in consul utamur usu.</p>
-			</article>
-			<article>
-				<h2>His at autem inani volutpat</h2>
-				<p>Te has amet modo perfecto, te eum mucius conclusionemque, mel te erat deterruisset. Duo ceteros phaedrum id, ornatus postulant in sea. His at autem inani volutpat. Tollit possit in pri, platonem persecuti ad vix, vel nisl albucius gloriatur no.</p>
-			</article>
-		</main>
-		<aside>
-			<div>Sidebar 1</div>
-			<div>Sidebar 2</div>
-			<div>Sidebar 3</div>
-		</aside>
-	</section>
-	<footer>
-		<p>&copy; You can copy, edit and publish this template but please leave a link to our website | <a href="https://html5-templates.com/" target="_blank" rel="nofollow">HTML5 Templates</a></p>
-		<address>
-			Contact: <a href="mailto:me@example.com">Mail me</a>
-		</address>
-	</footer>
 
+  <div class="container">
+    <h1>Channels Directory Preview</h1>
+    <div class="grid" id="channelsGrid">
+      <!-- Grid items will be dynamically added here -->
+    </div>
+  </div>
+
+  <script>
+    // Array of folder structures (manual list, could be dynamically generated)
+    const channels = [
+      { folder: "001", htmlFile: "index.html", preview: "https://via.placeholder.com/200x150.png?text=Channel+1" },
+      { folder: "002", htmlFile: "index.html", preview: "https://via.placeholder.com/200x150.png?text=Channel+2" },
+      { folder: "003", htmlFile: "index.html", preview: "https://via.placeholder.com/200x150.png?text=Channel+3" }
+    ];
+
+    // Reference to the grid container
+    const grid = document.getElementById('channelsGrid');
+
+    // Create grid items dynamically
+    channels.forEach(channel => {
+      const div = document.createElement('div');
+      div.classList.add('item');
+
+      div.innerHTML = `
+        <img src="${channel.preview}" alt="${channel.folder}">
+        <div class="item-info">
+          <h3>Folder ${channel.folder}</h3>
+          <p><a href="channels/${channel.folder}/${channel.htmlFile}" class="item-link" target="_blank">View Site</a></p>
+        </div>
+      `;
+
+      grid.appendChild(div);
+    });
+  </script>
 
 </body>
-
 </html>
