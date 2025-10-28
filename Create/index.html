@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Your Webpage</title>
+    <link rel="stylesheet" href="style.css"> <!-- Optional: link to a CSS file for styling -->
+</head>
+<body>
+    <header>
+        <h1>Submit Your Webpage</h1>
+        <p>Thank you for wanting to contribute! Please fill out the form below to submit your HTML, JS, and CSS files for review.</p>
+    </header>
+
+    <section>
+        <form id="submitForm" action="https://formspree.io/f/your-email@example.com" method="POST" enctype="multipart/form-data">
+            <div>
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="htmlFile">HTML File:</label>
+                <input type="file" id="htmlFile" name="htmlFile" accept=".html" required>
+            </div>
+            <div>
+                <label for="jsFile">JavaScript File (Optional):</label>
+                <input type="file" id="jsFile" name="jsFile" accept=".js">
+            </div>
+            <div>
+                <label for="cssFile">CSS File (Optional):</label>
+                <input type="file" id="cssFile" name="cssFile" accept=".css">
+            </div>
+            <div>
+                <label for="message">Message (Optional):</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Your Website Name</p>
+    </footer>
+
+    <script>
+        // Optional: You can add JavaScript to handle form validation or custom behavior
+        document.getElementById('submitForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("Your submission has been sent! Thank you!");
+            this.submit();
+        });
+    </script>
+</body>
+</html>
