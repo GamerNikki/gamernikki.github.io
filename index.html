@@ -1,5 +1,61 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head></head>
-  <body>docs</body>
+<head>
+  <meta charset="UTF-8">
+  <title>Assets Index</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #111;
+      color: #eee;
+      padding: 20px;
+    }
+
+    a {
+      color: #4fc3f7;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .file {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Assets</h1>
+  <div id="fileList"></div>
+
+  <script>
+    // 📁 LIST YOUR FILES HERE
+    const files = [
+      "audio/song1.ogg",
+      "audio/song2.ogg",
+      "images/pic1.png",
+      "images/pic2.jpg",
+      "memory.wav"
+    ];
+
+    const basePath = "./assets/";
+    const container = document.getElementById("fileList");
+
+    files.forEach(file => {
+      const div = document.createElement("div");
+      div.className = "file";
+
+      const link = document.createElement("a");
+      link.href = basePath + file;
+      link.textContent = file;
+      link.target = "_blank";
+
+      div.appendChild(link);
+      container.appendChild(div);
+    });
+  </script>
+
+</body>
 </html>
